@@ -1,6 +1,10 @@
 {
   "permissions": {
     "defaultMode": "plan",
+    "allow": [
+      "mcp__aws-knowledge__*",
+      "Bash(node check.js)"
+    ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",

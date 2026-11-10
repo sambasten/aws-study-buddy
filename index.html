@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Study Buddy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1>AWS Study Buddy</h1>
+
+    <section class="card" aria-live="polite">
+      <p class="position" id="position"></p>
+      <h2 class="service" id="service"></h2>
+
+      <div class="answer" id="answer" hidden>
+        <p class="category" id="category"></p>
+        <p class="sentence" id="sentence"></p>
+        <a class="docs" id="docs" target="_blank" rel="noopener">Read the AWS docs ↗</a>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button type="button" id="prev">← Previous</button>
+      <button type="button" id="show" class="primary">Show answer</button>
+      <button type="button" id="next">Next →</button>
+    </div>
+  </main>
+
+  <script src="cards.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
