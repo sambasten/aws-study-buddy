@@ -1,5 +1,6 @@
 // Validates cards.js. Usage: node check.js
-// Prints PASS (exit 0) or FAIL plus each problem (exit 2).
+// Prints PASS to stdout (exit 0), or FAIL plus each problem to stderr (exit 2).
+// Problems go to stderr so the Claude Code hook can show them when it blocks.
 
 const path = require("path");
 
@@ -65,7 +66,7 @@ if (problems.length === 0) {
   console.log("PASS");
   process.exit(0);
 } else {
-  console.log("FAIL");
-  for (const p of problems) console.log(`- ${p}`);
+  console.error("FAIL");
+  for (const p of problems) console.error(`- ${p}`);
   process.exit(2);
 }
