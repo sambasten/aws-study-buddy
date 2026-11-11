@@ -58,6 +58,12 @@ const CARDS = [
     answer: "Amazon Bedrock AgentCore lets you build, deploy and run AI agents securely at scale without managing infrastructure.",
     category: "AI / Machine Learning",
     docsUrl: "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html"
+  },
+  {
+    service: "AWS Lambda",
+    answer: "AWS Lambda runs your code when it's needed, so you never have to set up or manage servers.",
+    category: "Compute",
+    docsUrl: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
   }
 ];
 
