@@ -1,7 +1,7 @@
 # AWS Study Buddy — Spec
 
 ## Goal
-A one-page flashcard app for learning AWS services. Each card shows a service name. Pressing "Show answer" reveals one plain sentence on what the service does, a short category, and a link to its official AWS documentation.
+A one-page flashcard app for learning AWS services. Each card shows a service name. Pressing "Show answer" reveals one plain sentence on what the service does, a short category, and a link to its official AWS documentation. A "Shuffle" button puts the cards in a random order.
 
 ## Constraints
 - Plain HTML, CSS and JavaScript. No frameworks, no npm packages, no build step.
@@ -13,7 +13,7 @@ A one-page flashcard app for learning AWS services. Each card shows a service na
 |---|---|
 | `index.html` | Page markup. Loads `style.css`, `cards.js`, then `app.js`. |
 | `style.css` | Styling. |
-| `app.js` | Card display and navigation logic. |
+| `app.js` | Card display, navigation and shuffle logic. |
 | `cards.js` | The card data, and nothing else. |
 | `check.js` | Data validator, run with `node check.js`. |
 
@@ -43,9 +43,12 @@ A one-page flashcard app for learning AWS services. Each card shows a service na
 ## App behaviour
 - On load, the page shows the first card's service name with the answer hidden.
 - **Show answer** reveals the sentence, the category and a docs link. The link opens in a new tab (`target="_blank" rel="noopener"`).
-- **Next** and **Previous** move through cards in `cards.js` order. Next on the last card goes to the first, and Previous on the first card goes to the last.
+- **Next** and **Previous** move through the cards in their current order. Next on the last card goes to the first, and Previous on the first card goes to the last.
 - Changing cards hides the answer again.
 - A position indicator shows where you are, e.g. "Card 2 of 3".
+- **Shuffle** puts the cards in a new random order, jumps to the first card of that order, and hides the answer. Every card still appears exactly once. Next and Previous then follow the shuffled order. The shuffle does not change `cards.js`.
+- Until Shuffle is pressed, the order is the `cards.js` order. Reloading the page returns to that order.
+- Shuffle uses the Fisher-Yates algorithm with `Math.random()`, so every ordering is equally likely. Pressing Shuffle twice may give the same order by chance; that is fine.
 - If `CARDS` is missing or empty, the page says "No cards found" instead of breaking.
 
 ## Check script (`check.js`)
@@ -63,15 +66,16 @@ Output:
 - [ ] Double-clicking `index.html` in Chrome, Safari or Firefox shows the first card, with no console errors.
 - [ ] Show answer reveals the sentence, the category and a working docs link for all cards.
 - [ ] Next and Previous cycle through all cards and wrap at both ends. The answer hides again on each move.
+- [ ] Shuffle changes the order, lands on card 1 of the new order with the answer hidden, and Next then visits every card exactly once before wrapping. Reloading restores the `cards.js` order.
 - [ ] `node check.js` on the starter data prints `PASS` and exits `0`.
 - [ ] Each of the following prints `FAIL` plus the specific problem and exits `2`: removing a field from a card, adding a second "amazon ecs", and changing a docsUrl to `http://example.com`.
 - [ ] Several problems at once are all listed.
 - [ ] The project has no `package.json` and no `node_modules`, and makes no network calls except the docs links the user clicks.
 
 ## Not now
-- Shuffle, random order, or spaced repetition
+- Spaced repetition
 - Scoring, progress tracking, or "I knew it / I didn't" buttons
-- Saving state between visits (localStorage)
+- Saving state between visits (localStorage), including the shuffled order
 - Search, filters, or browsing by category
 - Keyboard shortcuts and flip animations
 - Rejecting blank-string fields, unknown extra fields, or categories outside a fixed list
