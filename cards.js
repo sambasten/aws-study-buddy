@@ -64,6 +64,24 @@ const CARDS = [
     answer: "AWS Lambda runs your code when it's needed, so you never have to set up or manage servers.",
     category: "Compute",
     docsUrl: "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+  },
+  {
+    service: "Amazon GuardDuty",
+    answer: "Amazon GuardDuty watches your AWS account's activity logs and warns you about suspicious or possibly harmful activity.",
+    category: "Security",
+    docsUrl: "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+  },
+  {
+    service: "AWS Security Hub",
+    answer: "AWS Security Hub gathers security warnings from other AWS tools into one place and ranks the most serious first.",
+    category: "Security",
+    docsUrl: "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub-v2.html"
+  },
+  {
+    service: "Amazon Lightsail",
+    answer: "Amazon Lightsail bundles servers, storage and networking into simple packages for hosting websites at a fixed monthly price.",
+    category: "Compute",
+    docsUrl: "https://docs.aws.amazon.com/lightsail/latest/userguide/what-is-amazon-lightsail.html"
   }
 ];
 
