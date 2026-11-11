@@ -6,6 +6,7 @@ const path = require("path");
 
 const REQUIRED_FIELDS = ["service", "answer", "category", "docsUrl"];
 const DOCS_PREFIX = "https://docs.aws.amazon.com/";
+const MIN_CARDS = 4; // the quiz needs four options; keep equal to OPTION_COUNT in app.js
 
 function normalize(name) {
   return name.trim().replace(/\s+/g, " ").toLowerCase();
@@ -22,6 +23,10 @@ function check(cards) {
   if (!Array.isArray(cards)) {
     problems.push("cards.js must export an array of cards");
     return problems;
+  }
+
+  if (cards.length < MIN_CARDS) {
+    problems.push(`cards.js has ${cards.length} cards; the quiz needs at least ${MIN_CARDS}`);
   }
 
   const seen = new Map(); // normalized service -> first card index
@@ -49,6 +54,11 @@ function check(cards) {
 
     if (typeof card.docsUrl === "string" && !card.docsUrl.startsWith(DOCS_PREFIX)) {
       problems.push(`${label(card, i)}: docsUrl must start with ${DOCS_PREFIX} (got "${card.docsUrl}")`);
+    }
+
+    // The quiz hides the service name by stripping it from the front of the answer.
+    if (typeof card.service === "string" && typeof card.answer === "string" && !card.answer.startsWith(card.service)) {
+      problems.push(`${label(card, i)}: answer must start with the service name "${card.service}"`);
     }
   });
 

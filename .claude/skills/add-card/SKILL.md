@@ -33,7 +33,7 @@ Base the sentence only on what the page says. Write one plain-English sentence:
 ## 4. Pick a category
 Pick one short category. Reuse a category already in `cards.js` if one fits
 (currently: Containers, Security, AI / Machine Learning, Storage, Databases,
-Monitoring, Networking). Only add a new one, like Compute, when none fit.
+Monitoring, Networking, Compute). Only add a new one when none fit.
 
 ## 5. Set docsUrl
 Use the exact URL of the page you read in step 2. Copy it character for
